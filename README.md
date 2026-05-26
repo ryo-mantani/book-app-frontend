@@ -1,16 +1,55 @@
-# React + Vite
+# book-app-frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+本管理アプリのフロントエンドです。  
+React + Vite を使用し、Spring Bootで作成したREST APIと通信して本の情報を表示します。
 
-Currently, two official plugins are available:
+## 使用技術
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- React
+- Vite
+- JavaScript
+- CSS
+- fetch API
 
-## React Compiler
+## 機能
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- 本一覧の表示
+- Spring Boot APIとの通信
+- PostgreSQLに保存された本データの表示
 
-## Expanding the ESLint configuration
+※ 登録・削除・検索・更新機能は今後追加予定です。
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 起動方法
+
+### 1. フロントエンドを起動
+
+```bash
+npm run dev
+```
+
+### 2. ブラウザで確認
+
+```text
+http://localhost:5173
+```
+
+## API接続先
+
+バックエンド側のSpring Boot APIに接続しています。
+
+```text
+http://localhost:8080/books
+```
+
+## 現在の状態
+
+Reactの `useEffect` と `fetch` を使い、Spring Boot APIから本一覧を取得して画面表示するところまで実装済みです。
+
+## 今後の予定
+
+- CSSによる画面レイアウト調整
+- 本の登録フォーム作成
+- POST通信による登録機能
+- DELETE通信による削除機能
+- 検索機能
+- 編集・更新機能
