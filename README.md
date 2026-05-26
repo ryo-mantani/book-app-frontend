@@ -43,7 +43,8 @@ http://localhost:8080/books
 
 ## 現在の状態
 
-Reactの `useEffect` と `fetch` を使い、Spring Boot APIから本一覧を取得して画面表示するところまで実装済みです。
+React フロントエンドから Spring Boot REST API に通信し、
+PostgreSQL に保存された本データを一覧表示するところまで実装済みです。
 
 ## 今後の予定
 
