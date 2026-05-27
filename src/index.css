@@ -109,3 +109,146 @@ code {
   padding: 4px 8px;
   background: var(--code-bg);
 }
+
+/*全体*/
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f5f5f5;
+}
+
+.book-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/*本カード*/
+.book-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  width: 220px;
+  height: 320px;
+  padding: 16px;
+  margin-bottom: 12px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/*本詳細*/
+.book-info {
+  flex: 1;
+}
+
+/*本タイトル*/
+.book-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/*本表紙*/
+.book-image {
+  width: 100%;
+  border-radius: 8px;
+}
+
+/*本著者*/
+.book-author {
+  color: gray;
+  margin-top: auto;
+}
+
+/*ヘッダー*/
+.header {
+  margin-bottom: 12px;
+}
+
+/*メインタイトル*/
+.header h1 {
+  margin-bottom: 12px;
+}
+
+/*サブタイトル*/
+.header p {
+  color: gray;
+  margin-top: 0;
+}
+
+/*フォーム*/
+.form-area {
+  background-color: white;
+  padding: 16px;
+  margin-bottom: 24px;
+  border-radius: 12px;
+}
+
+
+/*--------------入力欄--------------*/
+input {
+  width: 100%;
+  padding: 8px;
+}
+
+/*--------------ラベル--------------*/
+label {
+  display: block;
+  margin-bottom: 12px;
+}
+/*--------------ボタン--------------*/
+button {
+  background-color: #4f46e5;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  margin-top: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+/*削除ボタン*/
+.delete-button {
+  display: block;
+  margin: 0 auto;
+  margin-top: 8px;
+}
+
+/*--------------ホバー--------------*/
+button:hover {
+  background-color: #3730a3;
+  transition: 0.2s;
+}
+
+/*使用した外装CSSプロパティ
+max-width: 最大横幅制限
+余白系
+padding: 内側余白
+margin: 外側余白
+margin-top: 上余白
+margin-bottom: 下余白
+線系
+border-radius: 角丸
+box-shadow: 影
+min-height: 最小高さ
+
+文字系
+font-size:サイズ
+font-weight:文字幅
+
+色系
+color:色
+background-color: 背景色
+
+display: 配置方式
+flex: 横並び
+justify-content: 横方向配置
+align-items: 縦方向配置
+
+transition: 可変時間
+
+display
+justify-content
+align-items
+*/

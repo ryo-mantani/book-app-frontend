@@ -1,8 +1,5 @@
 import { useEffect, useState } from 'react'
-
 import './App.css'
-
-
 
 function App() {
 
@@ -35,31 +32,56 @@ function App() {
       })
   }
 
-
-
-  
   return (
     <>
-      <h1>本管理アプリ</h1>
+      <div className="container">
+        <h1>本管理アプリ</h1>
+        <p>積読管理・シリーズ管理アプリ</p>
+
+
+      </div>
+      <div className="header"></div>
+      <div className="book-list">
+        {books.map(book => (
+          <div className="book-card" key={book.bookId}>
+            <div className="book-title">
+              {book.bookTitle}
+            </div>
+
+            <div className="book-author">
+              {book.authorName}
+            </div>
+
+            <div className="delete-button">
+              <button /*onClick={deleteBook}*/> 削除 </button>
+            </div>
+
+          </div>
+        ))}
+      </div>
       
-      <label>title input: 
-        <input value={title} onChange={(event) => 
-                              setTitle(event.target.value)}/>
-      </label>
+      <div className="form-area">
+        <label>タイトル: 
+          <input value={title} onChange={(event) => 
+                                setTitle(event.target.value)}/>
+        </label>
 
-      <label>author input:
-        <input value={author} onChange={(event) => 
-                                setAuthor(event.target.value)}/>
-      </label>
+        <label>　著者:
+          <input value={author} onChange={(event) => 
+                                  setAuthor(event.target.value)}/>
+        </label>
 
-      <button onClick={addBook}> 登録 </button>
-
-      {books.map(book => (
-        <p key={book.bookId}>{book.bookTitle}</p>
-      ))}
+        <button onClick={addBook}> 登録 </button>
+        
+      </div>
+      
       
     </>
   )
 }
 
 export default App
+
+
+
+
