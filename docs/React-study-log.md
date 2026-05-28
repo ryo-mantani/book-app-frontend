@@ -1,10 +1,16 @@
 ## 📝 React学習ログ
 
-### 2026/05/28 作業時間：4.0h
+### 2026/05/28 作業時間：6.0h
 - 学習内容(フロント)
-  - CSSによるレイアウト調整方法
-  - JSXとCSSを使ったUI構成理解
-  - Reactの状態管理（useState）によるモード切替制御
+  - CSSによるカード型レイアウト調整方法
+  - flex-wrap / gap を使った横並びレイアウト
+  - margin-top: auto によるボタン位置調整
+  - JSXとCSSを使ったUI構成
+  - useStateによるモード管理
+  - booleanによるON/OFF状態の扱い
+  - classNameの条件分岐
+  - template literalsを使ったclassName指定
+  - Reactの状態に応じて画面表示・処理を切り替える考え方
 
 ### 2026/05/27 作業時間：2.0h
 - 学習内容(フロント)

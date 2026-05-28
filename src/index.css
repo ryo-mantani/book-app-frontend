@@ -122,7 +122,9 @@ code {
 .book-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 32px;
+
+  justify-content: center;
 }
 
 /*本カード*/
@@ -204,6 +206,7 @@ code {
 input {
   width: 100%;
   padding: 8px;
+  box-sizing: border-box;
 }
 
 /*--------------ラベル--------------*/
@@ -228,34 +231,33 @@ button:hover {
 }
 
 
-/*----------グルスイッチエリア--------------*/
+/*----------トグルスイッチエリア--------------*/
 .toggle-area {
   display: flex;
   align-items: center;
   gap: 20px;
 }
-/*----------削除トグルスイッチ--------------*/
-.toggle-area-delete {
+
+/*----------共通トグル--------------*/
+.mode-toggle {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 10px;
 }
-
-.toggle-switch-delete {
+/*----------共通トグル枠--------------*/
+.toggle-switch {
   width: 60px;
   height: 30px;
-
   background-color: gray;
   border-radius: 999px;
   position: relative;
   cursor: pointer;
   transition: 0.3s;
 }
-
-.toggle-circle-delete {
+/*----------共通トグル〇スイッチ--------------*/
+.toggle-circle {
   width: 24px;
   height: 24px;
-
   background-color: white;
   border-radius: 50%;
   position: absolute;
@@ -264,52 +266,19 @@ button:hover {
   transition: 0.3s;
 }
 
-.toggle-switch-delete.on {
+/*----------共通トグル〇スイッチOn状態--------------*/
+.toggle-switch.on .toggle-circle {
+  left: 33px; /*〇スイッチ移動*/
+}
+
+/*----------削除モードOn状態--------------*/
+.toggle-switch.delete.on {
   background-color: red;
 }
-
-.toggle-switch-delete.on .toggle-circle-delete {
-  left: 33px;
+/*----------編集モードOn状態--------------*/
+.toggle-switch.update.on {
+  background-color: #46e55b;
 }
-/*----------更新トグルスイッチ--------------*/
-.toggle-area-update {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-.toggle-switch-update {
-  width: 60px;
-  height: 30px;
-
-  background-color: gray;
-  border-radius: 999px;
-  position: relative;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.toggle-circle-update {
-  width: 24px;
-  height: 24px;
-
-  background-color: white;
-  border-radius: 50%;
-  position: absolute;
-  top: 3px;
-  left: 3px;
-  transition: 0.3s;
-}
-
-.toggle-switch-update.on {
-  background-color: rgb(9, 255, 0);
-}
-
-.toggle-switch-update.on .toggle-circle-update {
-  left: 33px;
-}
-
-
-
 
 
 /*
