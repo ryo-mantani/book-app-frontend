@@ -52,6 +52,7 @@
 
 body {
   margin: 0;
+  background-color: rgb(255, 219, 185);
 }
 
 #root {
@@ -115,7 +116,7 @@ code {
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
-  background-color: #f5f5f5;
+  background-color: rgb(255, 219, 185);
 }
 
 .book-list {
@@ -130,7 +131,7 @@ code {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  background-color: white;
+  background-color: rgb(230, 230, 230);
   width: 220px;
   height: 320px;
   padding: 16px;
@@ -148,18 +149,30 @@ code {
 .book-title {
   font-size: 20px;
   font-weight: bold;
+  width: 100%;
+  word-break: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
 }
 
 /*本表紙*/
 .book-image {
   width: 100%;
   border-radius: 8px;
+  background-color: rgba(255, 0, 0, 0.699);
 }
 
 /*本著者*/
 .book-author {
   color: gray;
   margin-top: auto;
+  width: 100%;
+  word-break: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 /*ヘッダー*/
@@ -208,18 +221,114 @@ button {
   border-radius: 8px;
   cursor: pointer;
 }
-/*削除ボタン*/
-.delete-button {
-  display: block;
-  margin: 0 auto;
-  margin-top: 8px;
-}
-
-/*--------------ホバー--------------*/
+/*----------ボタンホバー--------------*/
 button:hover {
   background-color: #3730a3;
   transition: 0.2s;
 }
+
+
+/*----------グルスイッチエリア--------------*/
+.toggle-area {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+/*----------削除トグルスイッチ--------------*/
+.toggle-area-delete {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.toggle-switch-delete {
+  width: 60px;
+  height: 30px;
+
+  background-color: gray;
+  border-radius: 999px;
+  position: relative;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.toggle-circle-delete {
+  width: 24px;
+  height: 24px;
+
+  background-color: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  transition: 0.3s;
+}
+
+.toggle-switch-delete.on {
+  background-color: red;
+}
+
+.toggle-switch-delete.on .toggle-circle-delete {
+  left: 33px;
+}
+/*----------更新トグルスイッチ--------------*/
+.toggle-area-update {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.toggle-switch-update {
+  width: 60px;
+  height: 30px;
+
+  background-color: gray;
+  border-radius: 999px;
+  position: relative;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.toggle-circle-update {
+  width: 24px;
+  height: 24px;
+
+  background-color: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  transition: 0.3s;
+}
+
+.toggle-switch-update.on {
+  background-color: rgb(9, 255, 0);
+}
+
+.toggle-switch-update.on .toggle-circle-update {
+  left: 33px;
+}
+
+
+
+
+
+/*
+削除ボタン
+.delete-button {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  margin-top: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+削除ボタンホバー
+.delete-button:hover {
+  background-color: darkred;
+}
+*/
+
 
 /*使用した外装CSSプロパティ
 max-width: 最大横幅制限
