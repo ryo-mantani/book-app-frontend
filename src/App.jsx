@@ -30,6 +30,10 @@ function App() {
 
   //削除
   const deleteBook = (id) => {
+    if (id === null) {
+      alert("削除する本を選択してください")
+      return
+    }
     //ブラウザ標準Yes/No機能
     const check = window.confirm("本当に削除しますか？")
     //No
@@ -42,6 +46,11 @@ function App() {
 
   //更新
   const updateBook = (id) => {
+    //モードと編集する本を確認
+    if (id === null) {
+      alert("編集する本を選択してください")
+      return
+    }
     //ブラウザ標準Yes/No機能
     const check = window.confirm("本当に更新しますか？")
     //No
@@ -93,9 +102,23 @@ function App() {
                                   setAuthor(event.target.value)}/>
         </label>
             
-        {/*登録更新ボタン*/}
-        <button type="button" onClick={() => editId ? updateBook(editId) : addBook()}>
-          {editId ? "更新" : "登録"}
+        {/*登録更新ボタン 削除モード中は制限*/}
+        <button
+          disabled={mode === "delete"} 
+          className={
+            mode === "delete" ? "delete-button": 
+            mode === "update" ? "update-button" : ""
+          }
+
+          type="button" 
+          onClick={() => {
+            if(mode === "update") {
+              updateBook(editId) 
+             } else {
+               addBook()
+            }}}>
+          {mode === "update" ? "更新" : "登録"}
+
         </button>
         
       </div>
