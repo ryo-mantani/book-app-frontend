@@ -1,5 +1,13 @@
 ## 📝 React学習ログ
 
+### 2026/05/30 作業時間：2.0h
+- 学習内容(フロント)
+- RequestParamの利用方法
+- defaultValueの役割
+- Spring Data JPAのContaining検索
+- 完全一致と部分一致の違い
+- AND検索の実装方法
+
 ### 2026/05/29 作業時間：2.0h
 - 学習内容(フロント)
   - JSX内の三項演算子

@@ -124,7 +124,6 @@ code {
   flex-wrap: wrap;
   gap: 32px;
 
-  justify-content: center;
 }
 
 /*本カード*/
@@ -224,6 +223,12 @@ button {
   border-radius: 8px;
   cursor: pointer;
 }
+/*----------ボタンホバー--------------*/
+button:hover {
+  background-color: #3730a3;
+  transition: 0.2s;
+}
+
 /*----------削除モードOn状態--------------*/
 .delete-button {
   background-color: #5f5f5f;
@@ -233,11 +238,6 @@ button {
   background-color: #5f5f5f;
 }
 
-/*----------ボタンホバー--------------*/
-button:hover {
-  background-color: #3730a3;
-  transition: 0.2s;
-}
 /*----------更新モードOn状態--------------*/
 .update-button {
   background-color: #46e55b;
@@ -247,6 +247,18 @@ button:hover {
   background-color: #31a340;
   transition: 0.2s;
 }
+
+/*----------検索モードOn状態--------------*/
+.search-button {
+  background-color: #e58646;
+}
+/*----------検索ボタンホバー--------------*/
+.search-button:hover {
+  background-color: #aa7633;
+  transition: 0.2s;
+}
+
+
 
 /*----------トグルスイッチエリア--------------*/
 .toggle-area {
@@ -296,7 +308,10 @@ button:hover {
 .toggle-switch.update.on {
   background-color: #46e55b;
 }
-
+/*----------編集モードOn状態--------------*/
+.toggle-switch.search.on {
+  background-color: #e58646;
+}
 
 /*
 削除ボタン

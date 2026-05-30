@@ -3,13 +3,18 @@ import './App.css'
 
 function App() {
 
+  {/*本関連変数*/}
   const [books, setBooks] = useState([])
   const [editId, setEditId] = useState(null)
   const [title, setTitle] = useState("")
   const [author, setAuthor] = useState("")
 
-
+  {/*複合モード*/}
   const [mode, setMode] = useState("normal")
+
+  {/*検索*/}
+  const [searchText, setSearchText] = useState("")
+
 
   useEffect(() => {fetchBooks()}, [])
 
@@ -44,11 +49,19 @@ function App() {
     }).then(() => fetchBooks())
   }
 
+  //検索
+  const searchBook = () => {
+    fetch(
+      `http://localhost:8080/books/search?title=${title}&author=${author}`
+    )
+      .then(response => response.json())
+      .then(data => setBooks(data))
+  }
+
   //更新
   const updateBook = (id) => {
-    //モードと編集する本を確認
     if (id === null) {
-      alert("編集する本を選択してください")
+      alert("更新する本を選択してください")
       return
     }
     //ブラウザ標準Yes/No機能
@@ -83,44 +96,32 @@ function App() {
       })
   }
 
+  {/*ステータス*/}
+  let buttonClass = ""
+  switch (mode) {
+    case "norma":
+      buttonClass = "button"
+      break
+
+    case "delete":
+      buttonClass = "delete-button"
+      break
+
+    case "update":
+      buttonClass = "update-button"
+      break
+
+    case "search":
+      buttonClass = "search-button"
+      break
+
+  }
+
   return (
     <>
       <div className="container">
         <h1>本管理アプリ</h1>
         <p>積読管理・シリーズ管理アプリ</p>
-      </div>
-
-      {/*登録フォーム*/}
-      <div className="form-area">
-        <label>タイトル: 
-          <input value={title} onChange={(event) => 
-                                setTitle(event.target.value)}/>
-        </label>
-
-        <label>著  者:
-          <input value={author} onChange={(event) => 
-                                  setAuthor(event.target.value)}/>
-        </label>
-            
-        {/*登録更新ボタン 削除モード中は制限*/}
-        <button
-          disabled={mode === "delete"} 
-          className={
-            mode === "delete" ? "delete-button": 
-            mode === "update" ? "update-button" : ""
-          }
-
-          type="button" 
-          onClick={() => {
-            if(mode === "update") {
-              updateBook(editId) 
-             } else {
-               addBook()
-            }}}>
-          {mode === "update" ? "更新" : "登録"}
-
-        </button>
-        
       </div>
 
       {/*トグルエリア*/}
@@ -147,7 +148,51 @@ function App() {
           <p>：更新モード</p>
         </div>
 
+        {/*検索トグル*/}
+        <div className="mode-toggle">
+          <div
+            className={`toggle-switch search ${mode === "search" ? "on" : ""}`}
+            onClick={() => setMode(mode === "search" ? "normal" : "search")}
+          >
+            <div className="toggle-circle"></div>
+          </div>
+          <p>：検索モード</p>
+        </div>
       </div>
+
+      {/*登録フォーム*/}
+      <div className="form-area">
+        <label>タイトル: 
+          <input value={title} onChange={(event) => 
+                                setTitle(event.target.value)}/>
+        </label>
+
+        <label>著  者:
+          <input value={author} onChange={(event) => 
+                                  setAuthor(event.target.value)}/>
+        </label>
+            
+        {/*登録更新ボタン 削除モード中は制限*/}
+        <button
+          disabled={mode === "delete"} 
+          className={buttonClass}
+          type="button" 
+          onClick={() => {
+            if(mode === "update") {
+                updateBook(editId) 
+            } else if(mode === "search") {
+                searchBook()
+            } else {
+              addBook()
+            }}}>
+            
+          {mode === "update" ? "更新" : mode === "search" ? "検索" : "登録"}
+
+        </button>
+        
+      </div>
+
+
       
       <div className="header"></div>
 
