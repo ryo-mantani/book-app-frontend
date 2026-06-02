@@ -63,14 +63,23 @@ React フロントエンドから Spring Boot REST API に通信し、
 PostgreSQL に保存された本データの CRUD
 （登録・一覧表示・更新・削除）機能を実装済みです。
 
-また、React の useState を利用した状態管理を行い、
-削除モード・更新モードの切替UIを実装しています。
+また、React の useState・useEffect を利用した状態管理を行い、
+削除モード・更新モード・検索モードの切替UIを実装しています。
 
 更新モードではカード選択による編集機能を実装し、
-React → Spring Boot → PostgreSQL のデータ更新処理を確認済みです。
+選択状態の可視化やモード変更時の状態リセット処理にも対応しています。
+
+検索機能ではタイトル・著者による部分一致検索を実装し、
+Spring Boot REST API と連携した検索結果表示を行っています。
 
 一覧画面はカード型レイアウトで構成し、
-CSSによるUI調整を継続しています。
+CSSによるUI改善およびユーザビリティ向上を継続しています。
+
+## 📷 画面イメージ
+画面イメージはフロントエンドリポジトリに掲載しています。
+- [book-app-frontend]
+   (https://github.com/ryo-mantani/book-app-frontend/tree/main/docs/images)
+
 
 ## 🚀 今後実装予定
 ### フロントエンド強化

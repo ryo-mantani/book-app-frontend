@@ -9,6 +9,9 @@ function App() {
   const [title, setTitle] = useState("")
   const [author, setAuthor] = useState("")
 
+  {/*選択用ID*/}
+  const [selectId, setSelectId] = useState(null)
+  
   {/*複合モード*/}
   const [mode, setMode] = useState("normal")
 
@@ -17,6 +20,15 @@ function App() {
 
 
   useEffect(() => {fetchBooks()}, [])
+
+  useEffect(() => {
+    setTitle("")
+    setAuthor("")
+    setEditId(null)
+    setSelectId(null)
+    console.log("mode変更")
+  
+  }, [mode])
 
   //登録
   const addBook = () => {
@@ -79,6 +91,7 @@ function App() {
       setTitle("")
       setAuthor("")
       setEditId(null)
+      setSelectId(null)
       setMode("normal")
     })
     
@@ -174,19 +187,22 @@ function App() {
             
         {/*登録更新ボタン 削除モード中は制限*/}
         <button
-          disabled={mode === "delete"} 
           className={buttonClass}
           type="button" 
           onClick={() => {
-            if(mode === "update") {
-                updateBook(editId) 
+            if(mode === "delete") {
+                deleteBook(selectId) 
+            } else if(mode === "update") {
+                updateBook(selectId) 
             } else if(mode === "search") {
                 searchBook()
             } else {
               addBook()
             }}}>
             
-          {mode === "update" ? "更新" : mode === "search" ? "検索" : "登録"}
+          {mode === "delete" ? "削除" : 
+           mode === "update" ? "更新" : 
+           mode === "search" ? "検索" : "登録"}
 
         </button>
         
@@ -199,12 +215,19 @@ function App() {
       {/*本カード一覧*/}
       <div className="book-list">
         {books.map(book => (
-          <div className={`book-card ${mode === "delete" ? "delete-mode" : ""}`}
+          <div className={`book-card 
+              ${mode === "delete" ? "delete-mode" : ""}
+              ${mode === "update" ? "update-mode" : ""}
+              ${selectId === book.bookId ? "selected-card" : ""}
+              `}
               key={book.bookId}
               onClick={() => {
-                if (mode === "delete") {deleteBook(book.bookId)}
+                if (mode === "delete") {
+                  setSelectId(book.bookId)
+                }
                 if (mode === "update") {
                   setEditId(book.bookId)
+                  setSelectId(book.bookId)                    
                   setTitle(book.bookTitle)
                   setAuthor(book.authorName)
                 }
