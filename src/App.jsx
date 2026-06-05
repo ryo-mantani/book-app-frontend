@@ -15,6 +15,9 @@ function App() {
   {/*複合モード*/}
   const [mode, setMode] = useState("normal")
 
+   {/*検索時判定*/}
+  const [isSearch, setIsSearch] = useState(false)
+
   {/*検索*/}
   const [searchText, setSearchText] = useState("")
 
@@ -26,7 +29,7 @@ function App() {
     setAuthor("")
     setEditId(null)
     setSelectId(null)
-    console.log("mode変更")
+    setIsSearch(false)
   
   }, [mode])
 
@@ -63,11 +66,31 @@ function App() {
 
   //検索
   const searchBook = () => {
+
+    setIsSearch(true)
+
+    // 両方空なら全件取得
+    if (title === "" && author === "") {
+      fetchBooks()
+      return
+    }
+
     fetch(
-      `http://localhost:8080/books/search?title=${title}&author=${author}`
-    )
-      .then(response => response.json())
-      .then(data => setBooks(data))
+      `http://localhost:8080/books/search?title=${title}&author=${author}`)
+      .then(response => {
+        if (response.status === 404){
+          setBooks([])
+          return null
+        }
+
+        return response.json()
+      })
+
+      .then(data => {
+        if (data !== null){
+          setBooks(data)
+        }
+      })
   }
 
   //更新
@@ -93,6 +116,7 @@ function App() {
       setEditId(null)
       setSelectId(null)
       setMode("normal")
+      setIsSearch(false)
     })
     
   }
@@ -212,6 +236,12 @@ function App() {
       
       <div className="header"></div>
 
+      {books.length === 0 && isSearch && (
+        <p className="no-result">
+          検索結果がありません
+        </p>
+      )}
+
       {/*本カード一覧*/}
       <div className="book-list">
         {books.map(book => (
@@ -231,11 +261,18 @@ function App() {
                   setTitle(book.bookTitle)
                   setAuthor(book.authorName)
                 }
-
               }}
           >    
             {/*タイトル*/}
             <div className="book-title">{book.bookTitle}</div>
+
+            {/*ダミー画像*/}
+            <img
+              src="/images/no-image.png"
+              alt="表紙画像"
+              className="book-image"
+            />
+
             {/*著者*/}
             <div className="book-author">{book.authorName}</div>
 
