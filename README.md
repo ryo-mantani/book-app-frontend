@@ -8,19 +8,19 @@ React + Vite を使用し、Spring Bootで作成したREST APIと通信して本
 画面イメージはフロントエンドリポジトリに掲載しています。
 
 ### 一覧画面
-![一覧画面](docs/images/01-home.png)
+![一覧画面](https://github.com/ryo-mantani/book-app-frontend/tree/main/docs/images/01-home.png)
 
 ### 登録確認
-![登録確認](docs/images/02-register-confirm.png)
+![登録確認](https://github.com/ryo-mantani/book-app-frontend/tree/main/docs/images/02-register-confirm.png)
 
 ### 更新モード
-![更新モード](docs/images/03-update-mode.png)
+![更新モード](https://github.com/ryo-mantani/book-app-frontend/tree/main/docs/images/03-update-mode.png)
 
 ### 削除モード
-![削除モード](docs/images/04-delete-mode.png)
+![削除モード](https://github.com/ryo-mantani/book-app-frontend/tree/main/docs/images/04-delete-mode.png)
 
 ### 検索結果
-![検索結果](docs/images/05-search-result.png)
+![検索結果](https://github.com/ryo-mantani/book-app-frontend/tree/main/docs/images/05-search-result.png)
 
 
 ## 現在の状態
