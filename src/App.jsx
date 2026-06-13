@@ -136,7 +136,7 @@ function App() {
   {/*ステータス*/}
   let buttonClass = ""
   switch (mode) {
-    case "norma":
+    case "normal":
       buttonClass = "button"
       break
 
